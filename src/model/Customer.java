@@ -16,7 +16,6 @@ public class Customer {
 		return this;
 	}
 
-
 	public String getFName() {
 		return this.fname;
 	}
