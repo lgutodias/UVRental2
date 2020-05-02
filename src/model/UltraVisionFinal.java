@@ -101,9 +101,9 @@ public class UltraVisionFinal {
 		return (BoxSet) new BoxSet().setSeason(sea).setName(name).setGenre(gen);
 	}
 	
-	public static Customer makeCustomer(String name) {
+	/*public static Customer makeCustomer(String name) {
 		return new Customer().setId(++id).setName(name);
-	}
+	}*/
 	
 } // End class UltraVideo
 
