@@ -2,7 +2,7 @@ package model;
 
 import interfaces.Music;
 
-public final class Album extends Titles implements Music {
+public final class Album extends Titles implements Music<Album> {
 	
 	private String artist;
 
@@ -12,8 +12,9 @@ public final class Album extends Titles implements Music {
 	}
 
 	@Override
-	public void setArtist(String artist) {
+	public Album setArtist(String artist) {
 		this.artist = artist;
+		return this;
 	}
 
 	@Override

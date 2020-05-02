@@ -2,7 +2,7 @@ package model;
 
 import interfaces.Video;
 
-public final class Movie extends Titles implements Video {
+public final class Movie extends Titles implements Video<Movie> {
 	
 	private String director;
 
@@ -12,8 +12,9 @@ public final class Movie extends Titles implements Video {
 	}
 
 	@Override
-	public void setDirector(String director) {
+	public Movie setDirector(String director) {
 		this.director = director;
+		return this;
 	}
 
 	@Override

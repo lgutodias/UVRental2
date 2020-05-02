@@ -1,8 +1,8 @@
 package interfaces;
 
-public interface TV extends Title{
+public interface TV<T extends Title>{
 	
 	public int getSeason();
-	public void setSeason(int season);
+	public T setSeason(int season);
 
 }
