@@ -1,33 +1,33 @@
 package model;
 
 public class Customer {
-	private String FName;
-	private String LName;
-	private String Email;
+	private String fname;
+	private String lname;
+	private String email;
 	private int id;
 	private int debitcard;
 	private int creditcard;
 	
-	public Customer setFName(String FName) {
-		this.FName = FName;
+	public Customer setFName(String fname) {
+		this.fname = fname;
 		return this;
 	}
-	public String getFName() {
-		return this.FName;
+	public String getfname() {
+		return this.fname;
 	}
-	public Customer setLName(String LName) {
-		this.LName = LName;
+	public Customer setLName(String lname) {
+		this.lname = lname;
 		return this;
 	}
 	public String geLName() {
-		return this.LName;
+		return this.lname;
 	}
-	public Customer setEmail(String Email) {
-		this.Email = Email;
+	public Customer setEmail(String email) {
+		this.email = email;
 		return this;
 	}
 	public String getEmail() {
-		return this.Email;
+		return this.email;
 	}
 	public Customer setId(int id) {
 		this.id = id;
@@ -50,10 +50,12 @@ public class Customer {
 	public int getCreditCard() {
 		return this.creditcard;
 	}
-	
 	@Override
 	public String toString() {
-		return "Customer [FName=" + FName + ",LName=" + LName + ", id=" + id + "]";
+		return "Customer [fname=" + fname + ", lname=" + lname + ", email=" + email + ", id=" + id + ", debitcard="
+				+ debitcard + ", creditcard=" + creditcard + "]";
 	}
+	
+	
 }
 
