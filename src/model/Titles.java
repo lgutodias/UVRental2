@@ -16,7 +16,7 @@ public abstract class Titles implements Title {
 	}
 
 	@Override
-	public Title setTitle(String title) {
+	public Titles setTitle(String title) {
 		this.title = title;
 		return this;
 	}
@@ -27,7 +27,7 @@ public abstract class Titles implements Title {
 	}
 
 	@Override
-	public Title setGenre(String genre) {
+	public Titles setGenre(String genre) {
 		this.genre = genre;
 		return this;
 	}
@@ -38,7 +38,7 @@ public abstract class Titles implements Title {
 	}
 
 	@Override
-	public Title setYearOfRelease(int year) {
+	public Titles setYearOfRelease(int year) {
 		this.year = year;
 		return this;
 	}
@@ -49,7 +49,7 @@ public abstract class Titles implements Title {
 	}
 
 	@Override
-	public Title setMediaFormat(String media) {
+	public Titles setMediaFormat(String media) {
 		this.media = media;
 		return this;
 	}

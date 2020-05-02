@@ -85,9 +85,9 @@ public class UltraVisionFinal {
 		}
 	}
 	
-	public static Album makeAlbum(String art, String name, String gen) {
+	/*public static Album makeAlbum(String art, String name, String gen) {
 		return (Album) new Album().setArtist(art).setName(name).setGenre(gen);
-	}
+	}*/
 	
 	public static LiveConcertVideo makeLiveConcertVideo(String art, String name, String gen) {
 		return  (LiveConcertVideo) new LiveConcertVideo().setArtist(art).setName(name).setGenre(gen);
