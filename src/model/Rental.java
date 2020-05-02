@@ -6,7 +6,7 @@ import java.util.List;
 public class Rental {
 	
 	private Customer c;
-	private List<Product> p = new ArrayList<>();
+	private List<Titles> t = new ArrayList<>();
 
 	public void setCustomer(Customer c){
 	     this.c = c;
@@ -16,17 +16,17 @@ public class Rental {
 	     return this.c;
 	}
 
-	public void addProduct(Product p){
-	      this.p.add(p);
+	public void addProduct(Titles t){
+	      this.t.add(t);
 	}
 
-	public Product getProduct(int index){
-	     return p.get(index);
+	public Titles getProduct(int index){
+	     return t.get(index);
 	}
 
 	@Override
 	public String toString() {
-		return "Rental [c=" + c + ", p=" + p + "]";
+		return "Rental [c=" + c + ", t=" + t + "]";
 	}
 
 	

@@ -1,12 +1,28 @@
 package model;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Keyboard {
-
-	public static String input(String prompt) {
+class Keyboard {
+	
+	public static String textInput(String prompt) {
 		System.out.println(prompt);
-		Scanner in = new Scanner(System.in);
-		return in.nextLine();
+		Scanner input = new Scanner(System.in);
+		return input.nextLine();
+	}
+	
+	public static int numberInput(String prompt) {
+		
+		System.out.println(prompt);
+		int number = 0;
+		
+		try {
+			Scanner input = new Scanner(System.in);
+			number = input.nextInt();
+		} catch (InputMismatchException e) {
+			System.out.println("Enter only numbers!");
+			numberInput(prompt);
+		}
+		return number;
 	}
 }
