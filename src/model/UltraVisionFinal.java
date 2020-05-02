@@ -30,11 +30,11 @@ public class UltraVisionFinal {
 		
 		System.out.println("(1) Create Title");
 		System.out.println("(2) Create Customer");
-		String option = Keyboard.textInput("Enter an option: ");
+		/*String option = Keyboard.textInput("Enter an option: ");*/
 		
 		do {
 			
-			switch(option) {
+			//switch(option) {
 			case "1":
 				// Create Music
 				String name = Keyboard.textInput("Enter music name: ");
