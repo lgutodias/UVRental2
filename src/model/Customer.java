@@ -5,7 +5,6 @@ public class Customer {
 	private String lname;
 	private String email;
 	private int id;
-	private int debitcard;
 	private int creditcard;
 	
 	public Customer setFName(String fname) {
@@ -36,13 +35,7 @@ public class Customer {
 	public int getId() {
 		return this.id;
 	}
-	public Customer setDebitCard(int debitcard) {
-		this.debitcard = debitcard;
-		return this;
-	}
-	public int getDebitCard() {
-		return this.debitcard;
-	}
+	
 	public Customer setCreditCard(int creditcard) {
 		this.creditcard = creditcard;
 		return this;
@@ -52,8 +45,7 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [fname=" + fname + ", lname=" + lname + ", email=" + email + ", id=" + id + ", debitcard="
-				+ debitcard + ", creditcard=" + creditcard + "]";
+		return "Customer [fname=" + fname + ", lname=" + lname + ", email=" + email + ", id=" + id + ", creditcard=" + creditcard + "]";
 	}
 	
 	
