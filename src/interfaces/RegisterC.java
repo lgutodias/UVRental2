@@ -9,5 +9,6 @@ public interface RegisterC {
 	public Customer searchCustomer();
 
 	public void deleteCustomer();
-
+	//Sout
+	
 }
