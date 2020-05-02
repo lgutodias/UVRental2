@@ -11,14 +11,14 @@ public class Customer {
 		this.fname = fname;
 		return this;
 	}
-	public String getfname() {
+	public String getFName() {
 		return this.fname;
 	}
 	public Customer setLName(String lname) {
 		this.lname = lname;
 		return this;
 	}
-	public String geLName() {
+	public String getLName() {
 		return this.lname;
 	}
 	public Customer setEmail(String email) {
@@ -35,7 +35,6 @@ public class Customer {
 	public int getId() {
 		return this.id;
 	}
-	
 	public Customer setCreditCard(int creditcard) {
 		this.creditcard = creditcard;
 		return this;
