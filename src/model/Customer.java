@@ -15,11 +15,7 @@ public class Customer {
 		this.fname = fname;
 		return this;
 	}
-<<<<<<< HEAD
-	public String getFName() {
-=======
 	public String getFname() {
->>>>>>> 932db187216053f0867151ff4ef6c44b2b1c50a7
 		return this.fname;
 	}
 	public Customer setLName(String lname) {
