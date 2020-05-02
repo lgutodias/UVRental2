@@ -60,6 +60,7 @@ public class UltraVisionFinal {
 			displayCustomer(customers);
 			System.out.println("-------------------------------");
 			
+			// Ternary operator
 			running = (Keyboard.textInput("Eneter (y/Y) to leave: ").equalsIgnoreCase("y")) ? true : false;
 			
 		} while(!running);
