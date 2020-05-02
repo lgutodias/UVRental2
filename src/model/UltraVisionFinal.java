@@ -30,11 +30,11 @@ public class UltraVisionFinal {
 		
 		System.out.println("(1) Create Title");
 		System.out.println("(2) Create Customer");
-		/*String option = Keyboard.textInput("Enter an option: ");*/
+		String option = Keyboard.textInput("Enter an option: ");
 		
 		do {
 			
-			//switch(option) {
+			switch(option) {
 			case "1":
 				// Create Music
 				String name = Keyboard.textInput("Enter music name: ");
@@ -85,9 +85,9 @@ public class UltraVisionFinal {
 		}
 	}
 	
-	public static Album makeAlbum(String art, String name, String gen) {
+	/*public static Album makeAlbum(String art, String name, String gen) {
 		return (Album) new Album().setArtist(art).setName(name).setGenre(gen);
-	}
+	}*/
 	
 	public static LiveConcertVideo makeLiveConcertVideo(String art, String name, String gen) {
 		return  (LiveConcertVideo) new LiveConcertVideo().setArtist(art).setName(name).setGenre(gen);

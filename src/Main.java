@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import model.Album;
 import model.Customer;
 import model.Keyboard;
 import model.Titles;
@@ -9,7 +10,7 @@ public class Main {
 	static List<Titles> titles = new ArrayList<>();
 	static List<Customer> customers = new ArrayList<>();
 	
-	static int id = 0;
+	
 	
 	public static void main(String[] args) {
 		
@@ -23,16 +24,16 @@ public class Main {
 		
 		do {
 			
-			switch(option) {
+			switch (option) {
 			case "1":
 				//Create Music
-				String title = Keyboard.textInput("ENTER ALBUM NAME: ");
-				String artist = Keyboard.textInput("ENTER ARTIST: ");
+				String artist = Keyboard.textInput("ENTER ALBUM NAME: ");
+				String title = Keyboard.textInput("ENTER ARTIST: ");
 				String genre = Keyboard.textInput("ENTER GENRE: ");
 				int year = Keyboard.numberInput("ENTER YEAR OF RELEASE: ");
 				String media = Keyboard.textInput("ENTER MEDIA FORMAT: ");
 				
-				titles.add(makeAlbum(title, artist, genre, year, media));
+				titles.add(makeAlbum(artist, title, genre, year, media));
 			break;
 			
 			case "2":
@@ -40,9 +41,9 @@ public class Main {
 				String fname = Keyboard.textInput("ENTER FIRST NAME: ");
 				String lname = Keyboard.textInput("ENTER LAST NAME: ");
 				String email = Keyboard.textInput("ENTER EMAIL: ");
-				String  = Keyboard.textInput("ENTER CREDIT CARD: ");
+				int creditcard  = Keyboard.numberInput("ENTER CREDIT CARD: ");
 				
-				customers.add(makeCustomer(fname, lname, email, ));
+				customers.add(makeCustomer(fname, lname, email, creditcard));
 			break;
 			
 			default:
@@ -51,13 +52,23 @@ public class Main {
 			}
 			
 			// Ternary operator
-			running = (Keyboard.textInput("Eneter (y/Y) to leave: ").equalsIgnoreCase("y")) ? true : false;)
+			running = (Keyboard.textInput("Enter (y/Y) to leave: ").equalsIgnoreCase("y")) ? true : false;
 		} while(!running);
 		
 		
 	}
 	
+	public static Album makeAlbum(String artist, String title, String genre,
+			int year, String media) {
+		return (Album) new Album().setArtist(artist).setTitle(title)
+				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media);
+	}
 	
+	public static Customer makeCustomer(String fname, String lname,
+			String email, int creditcard) {
+		return new Customer().setFName(fname).setLName(lname).setEmail(email)
+				.setCreditCard(creditcard);
+	}
 	
 
 }

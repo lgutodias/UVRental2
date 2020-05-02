@@ -5,7 +5,7 @@ import interfaces.Music;
 public final class Album extends Titles implements Music<Album> {
 	
 	private String artist;
-
+	
 	@Override
 	public String getArtist() {
 		return this.artist;

@@ -4,21 +4,25 @@ public class Customer {
 	private String fname;
 	private String lname;
 	private String email;
-	private int id;
+	private static int id = 1;
 	private int creditcard;
+	
+	public Customer() {
+		id++;
+	}
 	
 	public Customer setFName(String fname) {
 		this.fname = fname;
 		return this;
 	}
-	public String getfname() {
+	public String getFname() {
 		return this.fname;
 	}
 	public Customer setLName(String lname) {
 		this.lname = lname;
 		return this;
 	}
-	public String geLName() {
+	public String getLName() {
 		return this.lname;
 	}
 	public Customer setEmail(String email) {
