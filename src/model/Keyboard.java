@@ -3,7 +3,7 @@ package model;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-class Keyboard {
+public class Keyboard {
 	
 	public static String textInput(String prompt) {
 		System.out.println(prompt);
