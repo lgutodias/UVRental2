@@ -2,7 +2,7 @@ package model;
 
 import interfaces.TV;
 
-public final class BoxSet extends Titles implements TV {
+public final class BoxSet extends Titles implements TV<BoxSet> {
 	
 	private int season;
 
@@ -12,8 +12,9 @@ public final class BoxSet extends Titles implements TV {
 	}
 
 	@Override
-	public void setSeason(int season) {
+	public BoxSet setSeason(int season) {
 		this.season = season;
+		return this;
 	}
 
 	@Override

@@ -8,7 +8,8 @@ import interfaces.Video;
 public class VideoLover implements MembershipPlan<Video> {
 	
 	private List<Video> videos = new ArrayList<>();
-
+	
+	// CRUD - C = create; R = read; U = update; D = delete
 	@Override
 	public List<Video> getAll() {
 		return this.videos;

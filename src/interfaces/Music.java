@@ -1,8 +1,8 @@
 package interfaces;
 
-public interface Music extends Title {
+public interface Music<T extends Title> {
 	
 	public String getArtist();
-	public void setArtist(String artist);
+	public T setArtist(String artist);
 	
 }
