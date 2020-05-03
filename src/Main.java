@@ -1,46 +1,92 @@
 import java.util.ArrayList;
 import java.util.List;
-//import interfaces.Title;
+
+import interfaces.Title;
 import model.Album;
 import model.BoxSet;
 import model.Customer;
 import model.Keyboard;
 import model.LiveConcertVideo;
 import model.Movie;
+import model.Rental;
 import model.Titles;
 
 public class Main {
 	
-	static List<Titles> titles = new ArrayList<>();
+	static List<Title> titles = new ArrayList<>();
 	static List<Customer> customers = new ArrayList<>();
+	static List<Rental> rentals = new ArrayList<>();
 	
 	static String title;
 	static String genre;
 	static int year;
 	static String media;
+	static int id = 1;
+	
+	static Customer c1 = new Customer();
+	//static Titles film = new Titles();
+	//static Rental r = new Rental();
 	
 	
 	public static void main(String[] args) {
 		
 		boolean running = false;
 		
-		/*titles.add(makeAlbum("Clo", "Diego", "Gay"));
-		titles.add(makeAlbum("LuLu", "Luiz", "Gay"));
-		titles.add(makeLiveConcertVideo("True man", "Raul", "Male"));
-		titles.add(makeMovie("Bravo", "John", "comedy"));
-		titles.add(makeBoxSet("1", "Lost", "Suspence"));*/
+		titles.add(makeAlbum(id++, "Pink Floyd", "Pulse", "Rock", 1995, "CD"));
+		titles.add(makeAlbum(id++, "Foo Fighters", "Hero", "Rock", 1999, "CD"));
+		titles.add(makeAlbum(id++, "Pink", "Nothing", "Pulse", 2002, "CD"));
+		titles.add(makeAlbum(id++, "David Guetta", "Live", "Electronic", 2020, "CD"));
 		
-		System.out.println("=====::::::::::| ULTRA VISION |::::::::::=====");
-		System.out.println("(1) ADD A TITLE");
-		System.out.println("(2) ADD A CUSTOMER");
-		System.out.println("(3) ADD A MOVIE");
-		System.out.println("=====::::::::::| XXXXXXXXXXXX |::::::::::=====");
-		String option = Keyboard.textInput("ENTER AN OPTION: ");
+		
+		customers.add(makeCustomer(id++, "Luiz", "Dias", "luiz@email.com", 200255));
+		
 		
 		do {
 			
+			System.out.println("=====::::::::::| ULTRA VISION |::::::::::=====");
+			System.out.println("(1) RENT A TITLE");
+			System.out.println("(2) ADD ALBUM/LIVE CONCERT");
+			System.out.println("(3) ADD A MOVIE");
+			System.out.println("(4) ADD BOX SET");
+			System.out.println("(5) SEARCH TITLE");
+			System.out.println("(6) ADD CUSTOMER");
+			System.out.println("=====::::::::::| XXXXXXXXXXXX |::::::::::=====");
+			String option = Keyboard.textInput("ENTER AN OPTION: ");
+			
 			switch (option) {
+			
 			case "1":
+				//Rent a Title
+				int counter = 0;
+				int idCust = Keyboard.numberInput("Enter customer id: ");
+				
+				for(Rental r : rentals) {
+					if(r.getCustomer().getId() == idCust) {
+						++counter;
+					}
+				}
+				
+				if(counter < 4) {
+					
+					--idCust;
+					int idTitle = Keyboard.numberInput("Enter title id: ")-1;
+					
+					Title title = titles.get(idTitle);
+					
+					rentals.add(
+							new Rental(customers.get(idCust)).addTitle(title)
+						);
+					
+					System.out.println("Title has been rented successfully");
+					System.out.println("----------------------------------------------------------");
+					
+				} else {
+					System.out.println("You can't rent any other title. Limit 4 tiles per customer");
+					System.out.println("-----------------------------------------------------------");
+				}
+			break;
+			
+			case "2":
 				//Create Music
 				String artist = Keyboard.textInput("ENTER ARTIST/BAND: ");
 				title = Keyboard.textInput("ENTER TITLE: ");
@@ -48,17 +94,7 @@ public class Main {
 				year = Keyboard.numberInput("ENTER YEAR OF RELEASE: ");
 				media = Keyboard.textInput("ENTER MEDIA FORMAT: ");
 				
-				titles.add(makeAlbum(artist, title, genre, year, media));
-			break;
-			
-			case "2":
-				//Create Customer
-				String fname = Keyboard.textInput("ENTER FIRST NAME: ");
-				String lname = Keyboard.textInput("ENTER LAST NAME: ");
-				String email = Keyboard.textInput("ENTER EMAIL: ");
-				int creditcard  = Keyboard.numberInput("ENTER CREDIT CARD: ");
-				
-				customers.add(makeCustomer(fname, lname, email, creditcard));
+				titles.add(makeAlbum(id++, artist, title, genre, year, media));
 			break;
 			
 			case "3":
@@ -69,13 +105,37 @@ public class Main {
 				year  = Keyboard.numberInput("ENTER YEAR OF RELEASE: ");
 				media  = Keyboard.textInput("ENTER MEDIA FORMAT: ");
 				
-				titles.add(makeMovie(director, title, genre, year,
+				titles.add(makeMovie(id++, director, title, genre, year,
 						media));
 			break;
 			
-			default:
-				System.out.println("OPTION DOESN'T EXIST.");
-				break;
+			case "4":
+				//Create Box Set
+				/*String fname = Keyboard.textInput("ENTER FIRST NAME: ");
+				String lname = Keyboard.textInput("ENTER LAST NAME: ");
+				String email = Keyboard.textInput("ENTER EMAIL: ");
+				int creditcard  = Keyboard.numberInput("ENTER CREDIT CARD: ");
+				
+				customers.add(makeCustomer(fname, lname, email, creditcard));*/
+			break;
+			
+			case "5":
+				//Search Title
+				String word = Keyboard.textInput("ENTER A KEY WORD: ");
+				System.out.println("Resultado de pesquisa:" );
+				displayTitle(searchTitle(titles, word));
+			break;
+			
+			case "6":
+				//Create Customer
+				String fname = Keyboard.textInput("ENTER FIRST NAME: ");
+				String lname = Keyboard.textInput("ENTER LAST NAME: ");
+				String email = Keyboard.textInput("ENTER EMAIL: ");
+				int creditcard  = Keyboard.numberInput("ENTER CREDIT CARD: ");
+				
+				customers.add(makeCustomer(id++, fname, lname, email, creditcard));
+			break;
+			
 			}
 			
 			// Ternary operator
@@ -90,8 +150,27 @@ public class Main {
 		
 	}
 	
-	public static void displayTitle(List<Titles> p) {
-		for (Titles t : p) {
+	static void displayRentals(List<Rental> rentals) {
+		for (Rental r : rentals) {
+			System.out.println(r);
+		}
+	}
+	
+	public static List<Title> searchTitle(List<Title> p, String word) {
+		
+		List<Title> l = new ArrayList<>();
+		word = word.toLowerCase();
+		for (Title t : p) {
+			if (t.getTitle().toLowerCase().contains(word) || t.getGenre()
+					.toLowerCase().contains(word)) {
+				l.add(t);
+			}
+		}
+		return l;
+	}
+	
+	public static void displayTitle(List<Title> p) {
+		for (Title t : p) {
 			System.out.println(t);
 		}
 	}
@@ -102,35 +181,38 @@ public class Main {
 		}
 	}
 	
-	public static Album makeAlbum(String artist, String title, String genre,
+	public static Album makeAlbum(int id, String artist, String title, String genre,
 			int year, String media) {
 		return (Album) new Album().setArtist(artist).setTitle(title)
-				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media);
+				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media)
+				.setId(id);
 	}
 	
-	public static LiveConcertVideo makeLiveConcertVideo(String artist,
+	public static LiveConcertVideo makeLiveConcertVideo(int id, String artist,
 			String title, String genre, int year, String media) {
 		return  (LiveConcertVideo) new LiveConcertVideo().setArtist(artist)
 				.setTitle(title).setGenre(genre).setYearOfRelease(year)
-				.setMediaFormat(media);
+				.setMediaFormat(media).setId(id);
 	}
 	
-	public static Movie makeMovie(String director, String title,
+	public static Movie makeMovie(int id, String director, String title,
 			String genre, int year, String media) {
 		return (Movie) new Movie().setDirector(director).setTitle(title)
-				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media);
+				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media)
+				.setId(id);
 	}
 	
-	public static BoxSet makeBoxSet(int season, String title,
+	public static BoxSet makeBoxSet(int id, int season, String title,
 			String genre, int year, String media) {
 		return (BoxSet) new BoxSet().setSeason(season).setTitle(title)
-				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media);
+				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media)
+				.setId(id);
 	}
 	
-	public static Customer makeCustomer(String fname, String lname,
+	public static Customer makeCustomer(int id, String fname, String lname,
 			String email, int creditcard) {
 		return new Customer().setFName(fname).setLName(lname).setEmail(email)
-				.setCreditCard(creditcard);
+				.setCreditCard(creditcard).setId(id);
 	}
 	
 

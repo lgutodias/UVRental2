@@ -4,11 +4,23 @@ import interfaces.Title;
 
 public abstract class Titles implements Title {
 	
+	private int id;
 	private String title;
 	private String genre;
 	private int year;
 	private String media;
 	
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public Titles setId(int id) {
+		this.id = id;
+		return this;
+	}
 
 	@Override
 	public String getTitle() {

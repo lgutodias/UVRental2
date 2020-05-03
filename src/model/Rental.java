@@ -3,30 +3,48 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import interfaces.Title;
+
 public class Rental {
 	
-	private Customer c;
-	private List<Titles> t = new ArrayList<>();
-
-	public void setCustomer(Customer c){
-	     this.c = c;
+	private List<Title> titles = new ArrayList<>();
+	private Customer customer;
+	
+	public Rental(Customer customer) {
+		this.customer = customer;
 	}
-
-	public Customer getCostumer(){
-	     return this.c;
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-
-	public void addTitle(Titles t){
-	      this.t.add(t);
+	
+	public Customer getCustomer() {
+		return this.customer;
 	}
-
-	public Titles getTitle(int index){
-	     return t.get(index);
+	
+	public void setProducts(List<Title> products) {
+		this.titles = products;
 	}
-
+	
+	public List<Title> getProducts(List<Title> products){
+		return this.titles = products;
+	}
+	
+	public Rental addTitle(Title product) {
+		this.titles.add(product);
+		return this;
+	}
+	
 	@Override
 	public String toString() {
-		return "Rental [c=" + c + ", t=" + t + "]";
+		
+		String content = "";
+		
+		for (Title t : this.titles) {
+			content = "Customer [id=" + this.customer.getId() + ", customer=" + this.customer.getFName() 
+					+ "], Title[title=" + t.getTitle() + ", genre=" + t.getGenre() + "]";
+		}
+		return content;
 	}
 
 	

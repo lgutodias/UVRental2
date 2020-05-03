@@ -1,15 +1,21 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
 	private String fname;
 	private String lname;
 	private String email;
-	private static int id = 1;
+	private static int id = 0;
 	private int creditcard;
+	
+	static List<Customer> customers = new ArrayList<>();
 	
 	public Customer() {
 		id++;
 	}
+	
 	
 	public Customer setFName(String fname) {
 		this.fname = fname;
@@ -51,7 +57,6 @@ public class Customer {
 	public String toString() {
 		return "Customer [fname=" + fname + ", lname=" + lname + ", email=" + email + ", id=" + id + ", creditcard=" + creditcard + "]";
 	}
-	
 	
 }
 

@@ -19,7 +19,10 @@ public final class Album extends Titles implements Music<Album> {
 
 	@Override
 	public String toString() {
-		return "Album [artist=" + artist + "]";
+		return "Album [id=" + getId() + ", artist=" + artist + ", title=" + getTitle() + ", genre=" + getGenre()
+				+ ", year=" + getYearOfRelease() + ", media=" + getMediaFormat() + "]";
 	}
+
+	
 	
 }
