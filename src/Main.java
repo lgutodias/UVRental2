@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+//import interfaces.Title;
 import model.Album;
 import model.BoxSet;
 import model.Customer;
@@ -12,6 +13,11 @@ public class Main {
 	
 	static List<Titles> titles = new ArrayList<>();
 	static List<Customer> customers = new ArrayList<>();
+	
+	static String title;
+	static String genre;
+	static int year;
+	static String media;
 	
 	
 	public static void main(String[] args) {
@@ -27,6 +33,7 @@ public class Main {
 		System.out.println("=====::::::::::| ULTRA VISION |::::::::::=====");
 		System.out.println("(1) ADD A TITLE");
 		System.out.println("(2) ADD A CUSTOMER");
+		System.out.println("(3) ADD A MOVIE");
 		System.out.println("=====::::::::::| XXXXXXXXXXXX |::::::::::=====");
 		String option = Keyboard.textInput("ENTER AN OPTION: ");
 		
@@ -36,10 +43,10 @@ public class Main {
 			case "1":
 				//Create Music
 				String artist = Keyboard.textInput("ENTER ARTIST/BAND: ");
-				String title = Keyboard.textInput("ENTER TITLE: ");
-				String genre = Keyboard.textInput("ENTER GENRE: ");
-				int year = Keyboard.numberInput("ENTER YEAR OF RELEASE: ");
-				String media = Keyboard.textInput("ENTER MEDIA FORMAT: ");
+				title = Keyboard.textInput("ENTER TITLE: ");
+				genre = Keyboard.textInput("ENTER GENRE: ");
+				year = Keyboard.numberInput("ENTER YEAR OF RELEASE: ");
+				media = Keyboard.textInput("ENTER MEDIA FORMAT: ");
 				
 				titles.add(makeAlbum(artist, title, genre, year, media));
 			break;
@@ -54,13 +61,26 @@ public class Main {
 				customers.add(makeCustomer(fname, lname, email, creditcard));
 			break;
 			
+			case "3":
+				//Create Movie
+				title = Keyboard.textInput("ENTER MOVIE TITLE: ");
+				genre = Keyboard.textInput("ENTER GENRE: ");
+				String director = Keyboard.textInput("ENTER DIRECTOR: ");
+				year  = Keyboard.numberInput("ENTER YEAR OF RELEASE: ");
+				media  = Keyboard.textInput("ENTER MEDIA FORMAT: ");
+				
+				titles.add(makeMovie(director, title, genre, year,
+						media));
+			break;
+			
 			default:
 				System.out.println("OPTION DOESN'T EXIST.");
 				break;
 			}
 			
 			// Ternary operator
-			running = (Keyboard.textInput("Enter (y/Y) to leave: ").equalsIgnoreCase("y")) ? true : false;
+			running = (Keyboard.textInput("Enter (y/Y) to leave: ")
+					.equalsIgnoreCase("y")) ? true : false;
 		} while(!running);
 		
 		System.out.println("========== Title ============");
@@ -88,16 +108,23 @@ public class Main {
 				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media);
 	}
 	
-	public static LiveConcertVideo makeLiveConcertVideo(String art, String name, String gen) {
-		return  (LiveConcertVideo) new LiveConcertVideo().setArtist(art).setName(name).setGenre(gen);
+	public static LiveConcertVideo makeLiveConcertVideo(String artist,
+			String title, String genre, int year, String media) {
+		return  (LiveConcertVideo) new LiveConcertVideo().setArtist(artist)
+				.setTitle(title).setGenre(genre).setYearOfRelease(year)
+				.setMediaFormat(media);
 	}
 	
-	public static Movie makeMovie(String dir, String name, String gen) {
-		return (Movie) new Movie().setDirector(dir).setName(name).setGenre(gen);
+	public static Movie makeMovie(String director, String title,
+			String genre, int year, String media) {
+		return (Movie) new Movie().setDirector(director).setTitle(title)
+				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media);
 	}
 	
-	public static BoxSet makeBoxSet(String sea, String name, String gen) {
-		return (BoxSet) new BoxSet().setSeason(sea).setName(name).setGenre(gen);
+	public static BoxSet makeBoxSet(int season, String title,
+			String genre, int year, String media) {
+		return (BoxSet) new BoxSet().setSeason(season).setTitle(title)
+				.setGenre(genre).setYearOfRelease(year).setMediaFormat(media);
 	}
 	
 	public static Customer makeCustomer(String fname, String lname,
