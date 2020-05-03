@@ -16,11 +16,11 @@ public class Rental {
 	     return this.c;
 	}
 
-	public void addProduct(Titles t){
+	public void addTitle(Titles t){
 	      this.t.add(t);
 	}
 
-	public Titles getProduct(int index){
+	public Titles getTitle(int index){
 	     return t.get(index);
 	}
 
