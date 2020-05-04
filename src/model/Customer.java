@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Customer {
 	private String fname;
 	private String lname;
@@ -12,8 +9,7 @@ public class Customer {
 	private MembershipCard memberid = new MembershipCard();
 	
 	
-	
-	
+
 	public MembershipCard getMemberid() {
 		return this.memberid;
 	}
@@ -58,7 +54,8 @@ public class Customer {
 	public String toString() {
 		return "Customer [fname=" + fname + ", lname=" + lname + ","
 				+ " email=" + email + ", id=" + id + ","
-						+ " creditcard=" + creditcard + ", points=" + this.memberid.getPoints() + "]";
+						+ " creditcard=" + creditcard + ", points=" 
+				+ this.memberid.getPoints() + "]";
 	}
 	
 }

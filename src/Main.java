@@ -9,7 +9,6 @@ import model.Keyboard;
 import model.LiveConcertVideo;
 import model.Movie;
 import model.Rental;
-import model.Titles;
 
 public class Main {
 	
@@ -39,14 +38,14 @@ public class Main {
 		
 		do {
 			
-			System.out.println("=====::::::::::| ULTRA VISION |::::::::::=====");
+			System.out.println("=====::::::::::| ULTRA VISION |::::::::::=====\n");
 			System.out.println("(1) RENT A TITLE");
 			System.out.println("(2) ADD ALBUM/LIVE CONCERT");
 			System.out.println("(3) ADD A MOVIE");
 			System.out.println("(4) ADD BOX SET");
 			System.out.println("(5) SEARCH TITLE");
-			System.out.println("(6) ADD CUSTOMER");
-			System.out.println("=====::::::::::| XXXXXXXXXXXX |::::::::::=====");
+			System.out.println("(6) ADD CUSTOMER\n");
+			System.out.println("=====::::::::::| ============ |::::::::::=====\n");
 			String option = Keyboard.textInput("ENTER AN OPTION: ");
 			
 			switch (option) {
@@ -54,7 +53,7 @@ public class Main {
 			case "1":
 				//Rent a Title
 				int counter = 0;
-				int idCust = Keyboard.numberInput("Enter customer id: ");
+				int idCust = Keyboard.numberInput("TYPE THE CUSTOMER ID: ");
 				
 				for(Rental r : rentals) {
 					
@@ -66,19 +65,19 @@ public class Main {
 				if(counter < 4) {
 					
 					--idCust;
-					int idTitle = Keyboard.numberInput("Enter title id: ")-1;
+					int idTitle = Keyboard.numberInput("TYPE THE TITLE ID: ")-1;
 					
 					Title title = titles.get(idTitle);
 					Customer customer = customers.get(idCust);
 					customer.getMemberid().addPoints(10);
 					rentals.add(new Rental(customer).addTitle(title));
 					
-					System.out.println("Title has been rented successfully");
-					System.out.println("----------------------------------------------------------");
+					System.out.println("***TITLE SUCCESSFULLY RENTED***\n");
+					System.out.println("=====::::::::::| ============ |::::::::::=====\n");
 					
 				} else {
-					System.out.println("You can't rent any other title. Limit 4 tiles per customer");
-					System.out.println("-----------------------------------------------------------");
+					System.out.println("SORRY! RENTAL LIMIT IS UP TO 4 PER CUSTOMER\n");
+					System.out.println("=====::::::::::| ============ |::::::::::=====\n");
 				}
 			break;
 			
@@ -133,7 +132,7 @@ public class Main {
 			break;
 			
 			default:
-				System.out.println("Option doesn't exist");
+				System.out.println("*** SORRY! INVALID OPTION ***\n");
 				break;
 			}
 			
