@@ -7,16 +7,17 @@ public class Customer {
 	private String fname;
 	private String lname;
 	private String email;
-	private static int id = 0;
+	private int id;
 	private int creditcard;
+	private MembershipCard memberid = new MembershipCard();
 	
-	static List<Customer> customers = new ArrayList<>();
 	
-	public Customer() {
-		id++;
+	
+	
+	public MembershipCard getMemberid() {
+		return this.memberid;
 	}
-	
-	
+
 	public Customer setFName(String fname) {
 		this.fname = fname;
 		return this;
@@ -55,7 +56,9 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [fname=" + fname + ", lname=" + lname + ", email=" + email + ", id=" + id + ", creditcard=" + creditcard + "]";
+		return "Customer [fname=" + fname + ", lname=" + lname + ","
+				+ " email=" + email + ", id=" + id + ","
+						+ " creditcard=" + creditcard + ", points=" + this.memberid.getPoints() + "]";
 	}
 	
 }

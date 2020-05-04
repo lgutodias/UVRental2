@@ -22,12 +22,8 @@ public class Main {
 	static int year;
 	static String media;
 	static int id = 1;
-	
-	static Customer c1 = new Customer();
-	//static Titles film = new Titles();
-	//static Rental r = new Rental();
-	
-	
+	static int idc = 1;
+		
 	public static void main(String[] args) {
 		
 		boolean running = false;
@@ -38,7 +34,7 @@ public class Main {
 		titles.add(makeAlbum(id++, "David Guetta", "Live", "Electronic", 2020, "CD"));
 		
 		
-		customers.add(makeCustomer(id++, "Luiz", "Dias", "luiz@email.com", 200255));
+		customers.add(makeCustomer(idc++, "Luiz", "Dias", "luiz@email.com", 200255));
 		
 		
 		do {
@@ -61,6 +57,7 @@ public class Main {
 				int idCust = Keyboard.numberInput("Enter customer id: ");
 				
 				for(Rental r : rentals) {
+					
 					if(r.getCustomer().getId() == idCust) {
 						++counter;
 					}
@@ -72,10 +69,9 @@ public class Main {
 					int idTitle = Keyboard.numberInput("Enter title id: ")-1;
 					
 					Title title = titles.get(idTitle);
-					
-					rentals.add(
-							new Rental(customers.get(idCust)).addTitle(title)
-						);
+					Customer customer = customers.get(idCust);
+					customer.getMemberid().addPoints(10);
+					rentals.add(new Rental(customer).addTitle(title));
 					
 					System.out.println("Title has been rented successfully");
 					System.out.println("----------------------------------------------------------");
@@ -133,9 +129,12 @@ public class Main {
 				String email = Keyboard.textInput("ENTER EMAIL: ");
 				int creditcard  = Keyboard.numberInput("ENTER CREDIT CARD: ");
 				
-				customers.add(makeCustomer(id++, fname, lname, email, creditcard));
+				customers.add(makeCustomer(idc++, fname, lname, email, creditcard));
 			break;
 			
+			default:
+				System.out.println("Option doesn't exist");
+				break;
 			}
 			
 			// Ternary operator
