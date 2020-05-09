@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +23,13 @@ public class Main {
 	static String media;
 	static int id = 1;
 	static int idc = 1;
+	
+	static boolean isEmail(String email) {
+		return email.matches("^[_a-z0-9-\\+]+(\\.[_a-z0-9-]+)*@"
+	            + "[a-z0-9-]+(\\.[a-z0-9]+)*(\\.[a-z]{2,})$");
+	}
 		
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		boolean running = false;
 		
@@ -38,15 +44,15 @@ public class Main {
 		
 		do {
 			
-			System.out.println("=====::::::::::| ULTRA VISION |::::::::::=====\n");
-			System.out.println("(1) RENT A TITLE");
-			System.out.println("(2) ADD ALBUM/LIVE CONCERT");
-			System.out.println("(3) ADD A MOVIE");
-			System.out.println("(4) ADD BOX SET");
-			System.out.println("(5) SEARCH TITLE");
-			System.out.println("(6) ADD CUSTOMER\n");
-			System.out.println("=====::::::::::| ============ |::::::::::=====\n");
-			String option = Keyboard.textInput("ENTER AN OPTION: ");
+			String menu = "=====::::::::::| ULTRA VISION |::::::::::=====\n"
+			+ "(1) RENT A TITLE\n"
+			+"(2) ADD ALBUM/LIVE CONCERT\n"
+			+"(3) ADD A MOVIE\n"
+			+"(4) ADD BOX SET\n"
+			+"(5) SEARCH TITLE\n"
+			+"(6) ADD CUSTOMER\n"
+			+"=====::::::::::| ============ |::::::::::=====\n";
+			String option = Keyboard.textInput(menu);
 			
 			switch (option) {
 			
@@ -125,7 +131,11 @@ public class Main {
 				//Create Customer
 				String fname = Keyboard.textInput("ENTER FIRST NAME: ");
 				String lname = Keyboard.textInput("ENTER LAST NAME: ");
-				String email = Keyboard.textInput("ENTER EMAIL: ");
+				String email = "";
+					do {
+						email = Keyboard.textInput("ENTER EMAIL: ");
+					} while (!isEmail(email));
+				
 				int creditcard  = Keyboard.numberInput("ENTER CREDIT CARD: ");
 				
 				customers.add(makeCustomer(idc++, fname, lname, email, creditcard));
@@ -149,9 +159,12 @@ public class Main {
 	}
 	
 	static void displayRentals(List<Rental> rentals) {
+		String content = "";
 		for (Rental r : rentals) {
+			content += r.toString() + "\n";
 			System.out.println(r);
 		}
+		Keyboard.textOutput(content);
 	}
 	
 	public static List<Title> searchTitle(List<Title> p, String word) {
@@ -168,15 +181,21 @@ public class Main {
 	}
 	
 	public static void displayTitle(List<Title> p) {
+		String content = "";
 		for (Title t : p) {
+			content += t.toString() + "\n";
 			System.out.println(t);
 		}
+		Keyboard.textOutput(content);
 	}
 	
 	public static void displayCustomer(List<Customer> customer) {
+		String content = ""; 
 		for (Customer c : customer) {
+			content += c.toString() + "\n";
 			System.out.println(c);
 		}
+		Keyboard.textOutput(content);
 	}
 	
 	public static Album makeAlbum(int id, String artist, String title, String genre,

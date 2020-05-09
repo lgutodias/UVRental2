@@ -5,7 +5,7 @@ public class Customer {
 	private String lname;
 	private String email;
 	private int id;
-	private int creditcard;
+	private String creditcard;
 	private MembershipCard memberid = new MembershipCard();
 	
 	
@@ -43,11 +43,11 @@ public class Customer {
 	public int getId() {
 		return this.id;
 	}
-	public Customer setCreditCard(int creditcard) {
+	public Customer setCreditCard(String creditcard) {
 		this.creditcard = creditcard;
 		return this;
 	}
-	public int getCreditCard() {
+	public String getCreditCard() {
 		return this.creditcard;
 	}
 	@Override
